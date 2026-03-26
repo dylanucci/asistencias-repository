@@ -1,0 +1,28 @@
+.flex-item-container{
+
+    display: flex;
+    width: 300px;
+    height: 125px;
+    flex-direction: column;
+    margin: auto;
+    
+}
+.asientos-container{
+    display: flex;
+    height: 25%;
+    flex-direction: row;
+}
+.asiento_item{
+    height: 100%;
+    width: 50%;
+    background-color: black;
+}
+.banco{
+    background-color: brown;
+    height: 50%;
+}
+.asiento_title{
+    color: white;
+    text-align: center;
+    margin: 10px;
+}

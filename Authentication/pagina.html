@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Asistencia - Login</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+    <nav class="navbar">
+    <div class="navbar-content">
+        <img src="escudo.png" alt="Logo" class="navbar-logo">
+        
+        <div class="navbar-titulo-container">
+            <h1 class="navbar-titulo">ESCUELA TECNICA N°24 DE 17 DEFENSA DE BUENOS AIRES</h1>
+        </div>
+
+        <img src="escudo.png" alt="Logo" class="navbar-logo">
+    </div>
+</nav>
+
+    <div id="login-container">
+        <div class="login-box">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Icon" width="80">
+            <h2>Acceso Sistema de Asistencia</h2>
+            <form id="form-login">
+                <div class="input-group">
+                    <label for="usuario">Usuario</label>
+                    <input type="text" id="usuario" placeholder="Ingresar Usuario" required>
+                </div>
+                <div class="input-group">
+                    <label for="pass">Contraseña</label>
+                    <input type="password" id="pass" placeholder="Ingresar Contraseña" required>
+                </div>
+
+                <p id="mensaje-error" style="color: #d93025; font-size: 0.85rem; margin-bottom: 1rem; display: none;">
+                   Usuario o contraseña incorrectos.
+                </p>
+                <button type="submit" id="btn-ingresar">Ingresar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="app-asistencia" style="display: none;">
+        <h1>Bienvenido al Control de Asistencia</h1>
+        </div>
+    <script src="logica.js"></script>
+</body>
+</html>
