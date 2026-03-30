@@ -61,10 +61,9 @@ function generarDiseño(){
 
     Object.assign(design.style, styles.designContainer);
  
-
-    var marginSize = (tamañoDiv / rows) * 0.25
-    
     var marginCount = rows-1
+
+    var marginSize = (tamañoDiv / marginCount) * 0.10
 
     var flexContainerSize = tamañoDiv - (marginCount * marginSize)
 
@@ -77,7 +76,7 @@ function generarDiseño(){
     flexItemContainerStyle.marginBottom = `${marginSize * 0.60}px`
 
     var bancoRepresentationStyle = styles.banco
-    var bancoRepresentationStyleHeight = flexWidth * 0.30
+    var bancoRepresentationStyleHeight = flexWidth * 0.25
     bancoRepresentationStyle.height = `${bancoRepresentationStyleHeight}px`
 
     var asientosContainerStyle = styles.asientosContainer

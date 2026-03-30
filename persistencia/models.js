@@ -3,7 +3,7 @@ export class Alumno{
         this.nombre = nombre
         this.apellido = apellido
         this.genero = genero
-        this.alumno_id = `"${this.nombre}-${this.curso_id}"`
+        this.alumno_id = `${this.nombre}-${this.curso_id}`
         this.curso_id = curso_id
         this.asiento_id = asiento_id
     }
@@ -12,7 +12,7 @@ export class Alumno{
 
 export class Curso{
     constructor(año, division){
-        this.id = `"${año}°${division}"`
+        this.id = `${año}°${division}`
         this.año = año
         this.division = division
     }
@@ -34,7 +34,7 @@ export class Asiento{
     constructor(numero, banco_id, diseño_id){
         this.banco_id = banco_id
         this.numero = numero
-        this.asiento_id = `"${this.banco_id}-${this.numero}"`
+        this.asiento_id = `${this.banco_id}-${this.numero}`
         this.diseño_id = diseño_id
     }s
 }

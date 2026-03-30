@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="alumnosForm.js" defer type="module"></script>
+    <link rel="stylesheet" href="alumnosForm.css">
+</head>
+<body>
+
+    <div class="body_container">
+
+        <form id="add_alumno_form" class="add_alumno_form">
+            <label style="margin-bottom: 20px; font-size: 32px;">Agregar alumno nuevo</label>
+            <div id="form_item" class="form_item">
+                <label>Nombre</label>
+                <input type="text" id="name_value" class="name_input">
+            </div>
+            <div id="form_item" class="form_item">
+                <label style="margin-bottom: 5px;">Apellido</label>
+                <input type="text" id="surname_value" class="surname_input">
+            </div>
+            <button id="add_alumno_button" class="add_alumno_button">Agregar</button>
+    </form>
+        <div id="alumnos_list" class="alumnos_list">
+            <div id="alumnos_list_resumen">Lista de alumnos</div>
+        </div>
+    </div>
+
+    
+
+</body>
+</html>

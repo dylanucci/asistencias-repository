@@ -11,11 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const pass = e.target.pass.value
 
         if (user === "ADMIN" && pass === "1234") {
-            errorMsg.style.display = 'none';
-            loginSec.style.display = 'none';
-            appSec.style.display = 'block';
             console.log("Acceso concedido");
-            window.location.href = "http://127.0.0.1:5500/interfaces/principal.html"
+            window.location.assign("../principal/principal.html")
         } else {
             errorMsg.style.display = 'block';
             document.getElementById('pass').value = "";
