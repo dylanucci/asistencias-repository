@@ -25,6 +25,7 @@ export class Diseño{
         this.columnas = columnas
         this.asientos_count = (filas * 2) * columnas
         this.diseño_element = diseño_element
+        this.diseño_id = `${curso_id}-${filas}x${columnas}`
     }
 }
 
@@ -41,7 +42,7 @@ export class Asiento{
 
 export class Banco{
     banco_id;
-    constructor(pos_x, pos_y){
+    constructor(pos_x, pos_y, diseño_id){
         this.pos_x = pos_x
         this.pos_y = pos_y
         this.banco_id = `${pos_x};${pos_y}`

@@ -13,18 +13,20 @@
 
         <form id="add_alumno_form" class="add_alumno_form">
             <label style="margin-bottom: 20px; font-size: 32px;">Agregar alumno nuevo</label>
-            <div id="form_item" class="form_item">
+            <div name="form_item_name" class="form_item">
                 <label>Nombre</label>
-                <input type="text" id="name_value" class="name_input">
+                <input type="text" id="name_value" name="name_value" class="name_input">
             </div>
-            <div id="form_item" class="form_item">
-                <label style="margin-bottom: 5px;">Apellido</label>
-                <input type="text" id="surname_value" class="surname_input">
+            <div name="form_item_surname" class="form_item">
+                <label style="margin-bottom: 5px;" >Apellido</label>
+                <input type="text" class="surname_input" name="surname_value">
             </div>
             <button id="add_alumno_button" class="add_alumno_button">Agregar</button>
     </form>
         <div id="alumnos_list" class="alumnos_list">
-            <div id="alumnos_list_resumen">Lista de alumnos</div>
+            <div id="alumnos_list_title" style="margin-bottom: 10px;">Lista de alumnos</div>
+            <div id="alumnos_container" class="alumnos_container">
+            </div>
         </div>
     </div>
 

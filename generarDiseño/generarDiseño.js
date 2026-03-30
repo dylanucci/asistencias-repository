@@ -38,9 +38,13 @@ const styles = {
   designContainer: {
     width: "null",
     display: "flex",
-    flexWrap: "wrap",
-    margin: "auto",
+    flexDirection: "row",
     justifyContent: "space-between"
+  },
+  bancoAsientosContainer:{
+    display: "flex",
+    flexDirection: "column-reverse",
+    width: "null"
   }
 };
 
@@ -69,10 +73,13 @@ function generarDiseño(){
 
     var flexWidth = flexContainerSize / rows
 
-    console.log("tamaño por banco: "+flexWidth)
+    var bancoAsientosWidth = flexWidth
+
+    var bancoAsientosStyle = styles.bancoAsientosContainer    
+    bancoAsientosStyle.width = `${bancoAsientosWidth}px`
 
     var flexItemContainerStyle = styles.flexItemContainer
-    flexItemContainerStyle.width = `${flexWidth}px`
+    flexItemContainerStyle.width = "100%"
     flexItemContainerStyle.marginBottom = `${marginSize * 0.60}px`
 
     var bancoRepresentationStyle = styles.banco
@@ -93,23 +100,42 @@ function generarDiseño(){
     if (rows <= 0 || columns <= 0){
         return;
     }
+
+    var bancoAsientosContainer = document.createElement("div")
     
+    var cursoId = localStorage.getItem("cursoCurrent")
+
+    var designObject = new Diseño(cursoId, rows, columns, null)
+
+    var bancosArray = []
+    var asientosArray = []
+
     for (var i = 0; i<rows; i++){
-        for(var j = 0; j<columns; j++){
+        for(var j = 0; j<columns; j++)
+        {
+
+            bancoAsientosContainer.id = i
 
             var pos_x = i
             var pos_y = j;
             
-            var banco = new Banco(pos_x, pos_y)
+            var banco = new Banco(pos_x, pos_y, designObject.diseño_id)
 
-            var asiento1 = new Asiento(1, banco.banco_id, 1)
-            var asiento2 = new Asiento(2, banco.banco_id, 1)
+            var asiento1 = new Asiento(1, banco.banco_id, designObject.diseño_id)
+            var asiento2 = new Asiento(2, banco.banco_id, designObject.diseño_id)
+
+            addBanco(banco)
+            addAsientos(asiento1, asiento2)
 
             var flexItemContainer = document.createElement("div")
             var asientosContainer = document.createElement("div")
             var bancoRepresentation = document.createElement("img")
             var asientoItem1 = document.createElement("div")
             var asientoItem2 = document.createElement("div")
+            
+
+
+            Object.assign(bancoAsientosContainer.style, bancoAsientosStyle)
 
             Object.assign(flexItemContainer.style, flexItemContainerStyle);
 
@@ -138,39 +164,64 @@ function generarDiseño(){
             
             asientoItem1.addEventListener("mouseenter", (e) => {
             e.target.style.backgroundColor = "blue";
-        });
+            
+            });
+            asientoItem2.addEventListener("mouseenter", (e) => {
+                e.target.style.backgroundColor = "blue";
+            });
+            asientoItem1.addEventListener("mouseleave", (e) => {
+                e.target.style.backgroundColor = "";
+            });
 
-        asientoItem2.addEventListener("mouseenter", (e) => {
-            e.target.style.backgroundColor = "blue";
-        });
-        asientoItem1.addEventListener("mouseleave", (e) => {
-            e.target.style.backgroundColor = "";
-        });
+            asientoItem2.addEventListener("mouseleave", (e) => {
+                e.target.style.backgroundColor = "";
+            });
 
-        asientoItem2.addEventListener("mouseleave", (e) => {
-            e.target.style.backgroundColor = "";
-        });
+          
+              asientosContainer.append(asientoItem1)
+              asientosContainer.append(asientoItem2)
 
-           
+              flexItemContainer.append(asientosContainer)
+              flexItemContainer.append(bancoRepresentation)
 
-
-            asientosContainer.append(asientoItem1)
-            asientosContainer.append(asientoItem2)
-
-            flexItemContainer.append(asientosContainer)
-            flexItemContainer.append(bancoRepresentation)
-
-            design.append(flexItemContainer)
-
+              bancoAsientosContainer.append(flexItemContainer)
         }
+        design.append(bancoAsientosContainer)
+        bancoAsientosContainer = document.createElement("div")
     }
 
-    var designObject = new Diseño("6*7", rows, columns, design.outerHTML)
+    designObject.diseño_element = design.outerHTML
 
-    var designString = JSON.stringify(designObject)
+    var diseñosString = localStorage.getItem("diseños")
 
-    localStorage.setItem("designValue", designString)
+    var diseñosObject = JSON.parse(diseñosString)
 
-    document.body.append(design)
+    diseñosObject.push(designObject)
+    
+    var diseñosUpdated = JSON.stringify(diseñosObject)
 
+    localStorage.setItem("diseños", diseñosUpdated)
+
+    window.location.assign("../curso/curso.html")
+}
+
+function addAsientos(asiento1, asiento2){
+  var asientosObject = JSON.parse(localStorage.getItem("asientos"))
+
+  asientosObject.push(asiento1)
+  asientosObject.push(asiento2)
+
+  var asientosUpdated = JSON.stringify(asientosObject)
+
+  localStorage.setItem("asientos", asientosUpdated)
+}
+
+function addBanco(banco){
+  var bancosObject = JSON.parse(localStorage.getItem("bancos"))
+
+  bancosObject.push(banco)
+
+  var bancosUpdated = JSON.stringify(bancosObject)
+
+  localStorage.setItem("bancos", bancosUpdated)
 }
