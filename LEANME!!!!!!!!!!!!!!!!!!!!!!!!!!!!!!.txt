@@ -15,6 +15,7 @@ sigan estos pasos:
 
 Instalación: Váyanse a extensiones en el VS Code (Ctrl+Shift+X), busquen "Live Server" y denle a instalar.
 
-Abrir el proyecto: Abran la carpeta del proyecto en el VS Code. No abran el archivo suelto, abran la carpeta.
+despues vallan al archivo html que desean correr y en cualquier parte de la interfaz de visual (dentro del codigo html) dan click derecho y les aparese una pestaña de opciones.
+ elijan "Open with Live Server". Se les va a abrir el navegador en el puerto 5500. Usen esto siempre para abrir cualqueir archivo, si abren el archivo haciendo doble clic desde la carpeta de Windows, se va a romper todo.
 
-Ejecutar: Hagan clic derecho en el index.html y elijan "Open with Live Server". Se les va a abrir el navegador en el puerto 5500. Usen esto siempre, si abren el archivo haciendo doble clic desde la carpeta de Windows, se va a romper todo.
+ la interfaz asistencias todavia NO FUNCIONA, la hago mañana, intenten usar ls nomrbes de clase y ids que estan predeterminados.
