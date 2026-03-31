@@ -25,4 +25,7 @@ cursoForm.addEventListener("submit", (ea)=>{
     cursos.push(cursoCreated)
 
     localStorage.setItem("cursos", JSON.stringify(cursos))
+
+    window.location.assign("../principal/principal.html")
+    
 })

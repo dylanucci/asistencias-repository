@@ -8,6 +8,8 @@ var addDiseñoButton = document.getElementById("add_diseño_button")
 
 var viewDiseñoButton = document.getElementById("view_diseño_button")
 
+var asistenciaButton = document.getElementById("asistencia_button")
+
 document.body.onload = ()=>{
 
     cursoTitle.innerHTML = cursoId
@@ -25,3 +27,7 @@ addAlumnosButton.addEventListener("click", (e)=>{
 viewDiseñoButton.addEventListener("click", (e)=>{
     window.location.assign("../diseños/diseño.html")
 })
+
+asistenciaButton.onclick = ()=>{
+    window.location.assign("../asistencia/asistencia.html")
+}

@@ -22,6 +22,8 @@ addCursoButton.addEventListener("click", ()=>{
 
 document.body.onload = ()=>{
 
+    preChargeData()
+
     var cursosString = localStorage.getItem("cursos")
 
     if (cursosString == ""){
@@ -50,4 +52,31 @@ document.body.onload = ()=>{
         cursosContainer.append(cursoItem)
     });
 
+}
+
+function preChargeData(){
+
+    localStorage.setItem("cursoCurrent", "")
+
+    var cursosData = localStorage.getItem("cursos")
+    var alumnosData = localStorage.getItem("alumnos")
+    var diseñosData = localStorage.getItem("diseños")
+    var asientosData = localStorage.getItem("asientos")
+    var bancosData = localStorage.getItem("bancos")
+
+    if (cursosData == null || cursosData == ""){
+        localStorage.setItem("cursos", "[]")
+    }
+    if (alumnosData == null || alumnosData == ""){
+        localStorage.setItem("alumnos", "[]")
+    }
+    if (diseñosData == null || diseñosData == ""){
+        localStorage.setItem("diseños", "[]")
+    }
+    if (asientosData == null || asientosData == ""){
+        localStorage.setItem("asientos", "[]")
+    }
+    if (bancosData == null || bancosData == ""){
+        localStorage.setItem("bancos", "[]")
+    }
 }

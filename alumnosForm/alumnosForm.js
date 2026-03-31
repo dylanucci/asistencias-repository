@@ -32,16 +32,29 @@ const btnEliminarStyle = {
     cursor: "pointer",
     fontWeight: "bold"
 };
-
 document.body.onload = ()=>{
+
+    loadAlumnosList()
+
+}
+
+function loadAlumnosList(){
 
     var alumnosString = localStorage.getItem("alumnos")
 
     var alumnos = JSON.parse(alumnosString)
 
+    var alumnosCurso = []
 
+    var cursoCurrent = localStorage.getItem("cursoCurrent")
 
-    alumnos.forEach(a => {
+    alumnos.forEach(a =>  {
+        if (a.curso_id == cursoCurrent){
+            alumnosCurso.push(a)
+        }
+    });    
+
+    alumnosCurso.forEach(a => {
         var alumnoItem = document.createElement("div")
         var alumnoMain = document.createElement("div") 
         var optionsMenu = document.createElement("div") 
@@ -90,10 +103,11 @@ document.body.onload = ()=>{
         alumnoItem.append(alumnoMain)
         alumnoItem.append(optionsMenu)
         alumnosContainer.append(alumnoItem)
-        });    
-
+    });
 }
 
+
+//bro reinicia la pagina cada que agregues uno, asi es visible.
 
 alumnoForm.addEventListener("submit", (ea)=>{
 

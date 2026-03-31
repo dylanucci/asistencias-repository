@@ -1,0 +1,20 @@
+HOLA
+
+Instrucciones para el Equipo de Desarrollo
+1. El diseño es Dinámico
+No busquen las mesas en el HTML porque no están. Las mesas y los asientos se generan solos mediante JS basándose en la cantidad de filas y columnas que definamos. Si cambian los números en el objeto de diseño, la interfaz se dibuja de nuevo sola.
+
+2. Todo sale del JS
+Casi todos los elementos (los divs, los botones de acción, los estilos de los alumnos) los creamos e inyectamos directamente desde el archivo .js de cada pantalla. El HTML es básicamente un cascarón vacío; la lógica pesada de los elementos vive en el código, los estilos de deberan aplicar desde ahi pero haganlo con IA mas rapido
+
+3. Cómo levantar el proyecto (Live Server)
+
+necesitan la extencion Live Server si o si
+
+sigan estos pasos:
+
+Instalación: Váyanse a extensiones en el VS Code (Ctrl+Shift+X), busquen "Live Server" y denle a instalar.
+
+Abrir el proyecto: Abran la carpeta del proyecto en el VS Code. No abran el archivo suelto, abran la carpeta.
+
+Ejecutar: Hagan clic derecho en el index.html y elijan "Open with Live Server". Se les va a abrir el navegador en el puerto 5500. Usen esto siempre, si abren el archivo haciendo doble clic desde la carpeta de Windows, se va a romper todo.
