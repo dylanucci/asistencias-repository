@@ -1,3 +1,6 @@
+// Script de asistencia diaria.
+// Qué hace: gestiona la sesión por fecha, actualiza contadores y sincroniza la lista con el diseño del aula.
+// Qué se puede cambiar: textos del encabezado, nombres de estados y mensajes de guardado.
 var courseId = localStorage.getItem("cursoCurrent")
 var pageTitle = document.getElementById("page_title")
 var pageSubtitle = document.getElementById("page_subtitle")
@@ -16,6 +19,8 @@ var countAbsent = document.getElementById("count_absent")
 
 var currentSession = null
 
+// Configuración visual del estado de asistencia.
+// Si te piden cambiar nombres visibles o colores del semáforo, hacelo acá.
 const STATUS_CONFIG = {
     libre: {
         label: "Libre",
@@ -249,6 +254,8 @@ function updateSummary(alumnos) {
 
 function renderAll() {
     var alumnos = getStudentsForCourse()
+
+    // Textos visibles del encabezado: podés reescribirlos sin afectar la lógica de guardado.
     pageTitle.textContent = `Asistencia - ${courseId}`
     pageSubtitle.textContent = `Marcando asistencia de ${courseId} para ${formatDateLabel(dateInput.value)}.`
 
@@ -392,6 +399,8 @@ function renderLayout(alumnos) {
 }
 
 function applySeatStyle(asiento, status) {
+    // Estilo visual de cada asiento en el plano del aula.
+    // Cambiá colores, borde o tipografía acá si te piden otro look.
     var style = STATUS_CONFIG[status] || STATUS_CONFIG.libre
     asiento.style.backgroundColor = style.background
     asiento.style.color = style.color

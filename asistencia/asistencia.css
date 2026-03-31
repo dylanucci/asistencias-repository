@@ -1,4 +1,8 @@
-:root {
+/* ===== AJUSTES DE DISEÑO =====
+   - Colores generales de la pantalla y del semáforo de asistencia.
+   - Fondo e imagen principal en `body`.
+   - Tarjetas, badges y botones por estado se retocan más abajo.
+*/:root {
     --color-primario: #007bff;
     --color-primario-hover: #0056b3;
     --texto-principal: #243142;
@@ -209,6 +213,7 @@ body::before {
     font-size: 1.55rem;
 }
 
+/* Resumen por estado: estos colores controlan las tarjetas del contador superior. */
 .summary-card.total { background: #edf4ff; color: #1e5ebc; }
 .summary-card.present { background: var(--verde-bg); color: var(--verde); }
 .summary-card.late { background: var(--amarillo-bg); color: var(--amarillo); }
@@ -289,6 +294,7 @@ body::before {
     white-space: nowrap;
 }
 
+/* Etiquetas de estado al lado de cada alumno: si cambian la identidad visual, ajustá estos tonos. */
 .status-badge.presente { background: var(--verde-bg); color: var(--verde); }
 .status-badge.tarde { background: var(--amarillo-bg); color: var(--amarillo); }
 .status-badge.ausente { background: var(--rojo-bg); color: var(--rojo); }

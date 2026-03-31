@@ -1,3 +1,6 @@
+// Script de gestión de alumnos por curso.
+// Qué hace: agrega estudiantes nuevos, lista los ya cargados y permite eliminarlos.
+// Qué se puede cambiar: mensajes visibles, textos del formulario y estilo aplicado a cada tarjeta.
 var alumnosListTitle = document.getElementById("alumnos_list_title")
 var alumnosContainer = document.getElementById("alumnos_container")
 var alumnoForm = document.getElementById("add_alumno_form")

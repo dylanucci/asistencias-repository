@@ -1,3 +1,6 @@
+// Script de visualización del diseño del aula.
+// Qué hace: muestra el plano guardado, permite asignar asientos y alternar presente/ausente desde esta vista.
+// Qué se puede cambiar: mensajes visibles, etiquetas de estado y colores usados en los asientos.
 var designPanel = document.getElementById("design_panel")
 var designTitle = document.getElementById("design_title")
 var designStatus = document.getElementById("design_status")

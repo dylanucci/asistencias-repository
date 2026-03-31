@@ -1,3 +1,8 @@
+/*
+   Hoja de estilos de prueba.
+   Qué hay acá: reglas simples para ensayar el tamaño de bancos, asientos y el contenedor general.
+   Qué se puede cambiar: anchos, altos, separación y color del banco sin afectar pantallas productivas.
+*/
 .flex_item_container{
     width: 202.4px;
     display: flex;

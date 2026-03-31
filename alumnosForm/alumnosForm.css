@@ -1,3 +1,8 @@
+/* ===== AJUSTES DE DISEÑO =====
+   - Paleta y tonos principales en `:root`.
+   - Fondo del formulario en `body`.
+   - Botón de alta de alumnos y mensajes visuales más abajo.
+*/
 :root {
     --color-primario: #007bff;
     --color-primario-hover: #0056b3;

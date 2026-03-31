@@ -1,3 +1,8 @@
+/* ===== AJUSTES DE DISEÑO =====
+   - Cambiá la paleta general desde estas variables.
+   - El fondo de la pantalla se modifica en `body`.
+   - Las tarjetas grandes de cursos y sus botones se editan más abajo.
+*/
 :root {
     --color-primario: #007bff;
     --color-primario-hover: #0056b3;
@@ -129,6 +134,7 @@ body::before {
     margin-bottom: 1.35rem;
 }
 
+/* Tarjetas de cursos: acá podés cambiar el degradado azul, sombras y efecto hover. */
 .cursos_container_item {
     width: 100%;
     border-radius: 14px;
