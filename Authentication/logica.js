@@ -1,3 +1,6 @@
+// Script del login.
+// Qué hace: valida el acceso local y redirige al panel principal.
+// Qué se puede cambiar: mensajes visibles, credenciales de prueba o la pantalla de destino.
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('form-login');
     const loginSec = document.getElementById('login-container');

@@ -1,3 +1,8 @@
+/* ===== AJUSTES DE DISEÑO =====
+   - Colores del formulario y botones: variables de `:root`.
+   - Fondo general e imagen: bloque `body`.
+   - Los mensajes de éxito/error se pueden retocar aquí sin afectar la lógica.
+*/
 :root {
     --color-primario: #007bff;
     --color-primario-hover: #0056b3;

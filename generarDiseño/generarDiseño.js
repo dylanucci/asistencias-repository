@@ -1,3 +1,6 @@
+// Script del generador de diseño del aula.
+// Qué hace: crea la estructura de bancos/asientos según filas y columnas y la guarda en localStorage.
+// Qué se puede cambiar: medidas visuales, mensajes al usuario y aspecto base del plano generado.
 var button = document.getElementById("generate_button")
 var backButton = document.getElementById("back_button")
 var formMessage = document.getElementById("form_message")

@@ -1,3 +1,6 @@
+// Script de la pantalla principal.
+// Qué hace: carga los cursos guardados, arma las tarjetas y permite abrir o eliminar cada uno.
+// Qué se puede cambiar: títulos visibles, etiquetas de botones y mensajes del estado vacío.
 var cursosTitle = document.getElementById("cursos_title")
 var cursosContainer = document.getElementById("cursos_container")
 var addCursoButton = document.getElementById("add_curso_button")
@@ -17,6 +20,7 @@ function getStorageArray(key) {
 }
 
 function mostrarEstadoVacio() {
+    // Texto visible del estado vacío de la pantalla principal.
     cursosTitle.textContent = "Cursos disponibles"
     cursosContainer.innerHTML = `
         <div class="empty-state">
@@ -90,6 +94,7 @@ function renderCursos() {
         cursoInfo.type = "button"
         cursoInfo.className = "curso_open_button"
         cursoInfo.id = c.id
+        // Etiquetas visibles de cada tarjeta de curso: el texto "Abrir" se cambia acá.
         cursoInfo.innerHTML = `<span>${c.id}</span><span class="curso_item_hint">Abrir</span>`
 
         cursoInfo.addEventListener("click", function (e) {

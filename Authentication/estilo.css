@@ -1,4 +1,12 @@
 
+/* ===== AJUSTES DE DISEÑO =====
+   - Navbar: tamaño del logo y del título en los bloques `.navbar-*`.
+   - Fondo del login: imagen y posicionamiento en `body`.
+   - Tarjeta central: transparencia, sombras y bordes en `#login-container`.
+   - Botón principal: color normal y hover al final del archivo.
+   Estos cambios son visuales y no afectan la lógica.
+*/
+
 /* Estilos del Navbar */
 .navbar {
     position: fixed;

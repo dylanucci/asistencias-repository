@@ -1,3 +1,8 @@
+/* ===== AJUSTES DE DISEÑO =====
+   - Paleta base de la vista del aula en `:root`.
+   - Fondo e imagen en `body`.
+   - Los colores de los estados de asistencia aparecen más abajo en `.state-badge`.
+*/
 :root {
     --color-primario: #007bff;
     --texto-principal: #243142;
@@ -219,6 +224,7 @@ body::before {
     white-space: nowrap;
 }
 
+/* Semáforo visual del estado del alumno: si te piden otros colores, cambiá este bloque y los siguientes. */
 .state-badge.presente {
     background: #e8f7ee;
     color: #1f9d55;

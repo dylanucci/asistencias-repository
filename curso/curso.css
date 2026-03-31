@@ -1,3 +1,8 @@
+/* ===== AJUSTES DE DISEÑO =====
+   - Colores base y tonos del módulo en `:root`.
+   - Fondo general e imagen del aula en `body`.
+   - Las tarjetas de acciones del curso se personalizan en `.action-card`.
+*/
 :root {
     --color-primario: #007bff;
     --color-primario-hover: #0056b3;
@@ -118,6 +123,7 @@ body::before {
     gap: 1rem;
 }
 
+/* Botones/tarjetas principales del curso: cambiá acá color, sombra y animación. */
 .action-card {
     border: none;
     border-radius: 16px;

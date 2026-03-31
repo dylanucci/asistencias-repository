@@ -1,3 +1,6 @@
+// Script para alta e importación de cursos.
+// Qué hace: registra cursos manualmente, importa datos desde JSON y genera diseños/asientos automáticos.
+// Qué se puede cambiar: textos de confirmación, mensajes de error y comportamiento visual del importador.
 var cursoForm = document.getElementById("curso_form")
 var backButton = document.getElementById("back_button")
 var formMessage = document.getElementById("form_message")
@@ -138,6 +141,8 @@ function getAutomaticLayout(studentCount) {
 }
 
 function buildDesignData(cursoId, rows, columns) {
+    // Estas medidas controlan el tamaño visual del aula generada automáticamente.
+    // Si quieren un plano más grande/chico o textos más visibles, ajustá este bloque.
     var tamañoDiv = 900
     var design = document.createElement("div")
     design.id = "design_element"
@@ -193,6 +198,7 @@ function buildDesignData(cursoId, rows, columns) {
                 flexDirection: "row"
             })
 
+            // Apariencia del banco dentro del diseño generado: color base y tamaño.
             Object.assign(bancoRepresentation.style, {
                 backgroundColor: "brown",
                 width: "100%",
@@ -200,6 +206,7 @@ function buildDesignData(cursoId, rows, columns) {
             })
             bancoRepresentation.src = "../images/banco.png"
 
+            // Apariencia del texto de cada asiento: color, centrado y tamaño de fuente.
             ;[asientoItem1, asientoItem2].forEach(function (item) {
                 Object.assign(item.style, {
                     display: "flex",

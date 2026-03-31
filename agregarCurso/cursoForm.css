@@ -1,3 +1,8 @@
+/* ===== AJUSTES DE DISEÑO =====
+   - Los colores globales del formulario están en `:root`.
+   - El fondo e imagen de esta pantalla se cambian en `body`.
+   - Los botones principales/secundarios se editan en `.primary-btn` y `.secondary-btn`.
+*/
 :root {
     --color-primario: #007bff;
     --color-primario-hover: #0056b3;
