@@ -133,24 +133,7 @@ function preChargeSixSeven(){
 }
     ];
 
-    var alumnos = [
-    {"alumno_id": 1, "nombre": "Andres", "apellido": "Garcia", "genero": "Masculino", "asiento_id": null, "curso_id": "6°7"},
-    {"alumno_id": 2, "nombre": "Dylan", "apellido": "Sarzuri", "genero": "Masculino", "asiento_id": null, "curso_id": "6°7"},
-    {"alumno_id": 3, "nombre": "Luciano", "apellido": "Poletti", "genero": "Masculino", "asiento_id": null, "curso_id": "6°7"},
-    {"alumno_id": 4, "nombre": "Salvador", "apellido": "Garcia Delfabro", "genero": "Masculino", "asiento_id": null, "curso_id": "6°7"},
-    {"alumno_id": 5, "nombre": "Araceli", "apellido": "Mendoza", "genero": "Femenino", "asiento_id": null, "curso_id": "6°7"},
-    {"alumno_id": 6, "nombre": "Esteban", "apellido": "Vera", "genero": "Masculino", "asiento_id": null, "curso_id": "6°7"},
-    {"alumno_id": 7, "nombre": "Facundo", "apellido": "Baroffio", "genero": "Masculino", "asiento_id": null, "curso_id": "6°7"},
-    {"alumno_id": 8, "nombre": "Fidel", "apellido": "Gonzalez", "genero": "Masculino", "asiento_id": null, "curso_id": "6°7"},
-    {"alumno_id": 9, "nombre": "Maria Jose", "apellido": "Herrera", "genero": "Femenino", "asiento_id": null, "curso_id": "6°7"},
-    {"alumno_id": 10, "nombre": "Melani", "apellido": "Sanizo", "genero": "Femenino", "asiento_id": null, "curso_id": "6°7"},
-    {"alumno_id": 11, "nombre": "nathaniel", "apellido": "Contreras", "genero": "Masculino", "asiento_id": null, "curso_id": "6°7"},
-    {"alumno_id": 12, "nombre": "Ramiro", "apellido": "Minardi", "genero": "Masculino", "asiento_id": null, "curso_id": "6°7"},
-    {"alumno_id": 13, "nombre": "Santiago", "apellido": "Alvarez", "genero": "Masculino", "asiento_id": null, "curso_id": "6°7"},
-    {"alumno_id": 14, "nombre": "Tiziano", "apellido": "Silva", "genero": "Masculino", "asiento_id": null, "curso_id": "6°7"},
-    {"alumno_id": 15, "nombre": "Matías", "apellido": "Pelucci", "genero": "Masculino", "asiento_id": null, "curso_id": "6°7"},
-    {"alumno_id": 16, "nombre": "Diana", "apellido": "Vazquez", "genero": "Femenino", "asiento_id": null, "curso_id": "6°7"}
-    ]
+    var alumnos = [{"alumno_id":1,"nombre":"Andres","apellido":"Garcia","genero":"Masculino","asiento_id":"3;1-2","curso_id":"6°7"},{"alumno_id":2,"nombre":"Dylan","apellido":"Sarzuri","genero":"Masculino","asiento_id":"1;3-2","curso_id":"6°7"},{"alumno_id":3,"nombre":"Luciano","apellido":"Poletti","genero":"Masculino","asiento_id":"4;3-1","curso_id":"6°7"},{"alumno_id":4,"nombre":"Salvador","apellido":"Garcia Delfabro","genero":"Masculino","asiento_id":"1;3-1","curso_id":"6°7"},{"alumno_id":5,"nombre":"Araceli","apellido":"Mendoza","genero":"Femenino","asiento_id":"2;3-1","curso_id":"6°7"},{"alumno_id":6,"nombre":"Esteban","apellido":"Vera","genero":"Masculino","asiento_id":"1;4-2","curso_id":"6°7"},{"alumno_id":7,"nombre":"Facundo","apellido":"Baroffio","genero":"Masculino","asiento_id":"2;1-2","curso_id":"6°7"},{"alumno_id":8,"nombre":"Fidel","apellido":"Gonzalez","genero":"Masculino","asiento_id":"2;2-2","curso_id":"6°7"},{"alumno_id":9,"nombre":"Maria Jose","apellido":"Herrera","genero":"Femenino","asiento_id":"1;4-1","curso_id":"6°7"},{"alumno_id":10,"nombre":"Melani","apellido":"Sanizo","genero":"Femenino","asiento_id":"2;3-2","curso_id":"6°7"},{"alumno_id":11,"nombre":"nathaniel","apellido":"Contreras","genero":"Masculino","asiento_id":"2;1-1","curso_id":"6°7"},{"alumno_id":12,"nombre":"Ramiro","apellido":"Minardi","genero":"Masculino","asiento_id":"2;2-1","curso_id":"6°7"},{"alumno_id":13,"nombre":"Santiago","apellido":"Alvarez","genero":"Masculino","asiento_id":"3;2-1","curso_id":"6°7"},{"alumno_id":14,"nombre":"Tiziano","apellido":"Silva","genero":"Masculino","asiento_id":"3;1-1","curso_id":"6°7"},{"alumno_id":15,"nombre":"Matías","apellido":"Pelucci","genero":"Masculino","asiento_id":"3;2-2","curso_id":"6°7"},{"alumno_id":16,"nombre":"Diana","apellido":"Vazquez","genero":"Femenino","asiento_id":"4;3-2","curso_id":"6°7"}]
 
     var cursos = [{"id":"6°7","año":"6","division":"7"}]
 

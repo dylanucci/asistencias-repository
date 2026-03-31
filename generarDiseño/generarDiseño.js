@@ -112,12 +112,12 @@ function generarDiseño() {
     var nuevosBancos = []
     var nuevosAsientos = []
 
-    for (var i = 0; i < rows; i++) {
+    for (var i = 1; i < rows+1; i++) {
         var bancoAsientosContainer = document.createElement("div")
         bancoAsientosContainer.id = i
         Object.assign(bancoAsientosContainer.style, styles.bancoAsientosContainer)
 
-        for (var j = 0; j < columns; j++) {
+        for (var j = 1; j < columns+1; j++) {
             var banco = {
                 banco_id: `${i};${j}`,
                 pos_x: i,

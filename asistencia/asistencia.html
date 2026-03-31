@@ -57,10 +57,22 @@
 
             <div class="content-grid">
                 <section class="card-panel">
+                    <h3>Vista del aula</h3>
+                    <p class="section-text">Los asientos cambian de color según el estado. Hacé clic en un asiento o en un alumno para alternar presente/ausente.</p>
+
+                    <div class="legend">
+                        <span class="legend-item"><i class="dot present"></i>Presente</span>
+                        <span class="legend-item"><i class="dot absent"></i>Ausente</span>
+                    </div>
+
+                    <div id="layout_container" class="layout-container"></div>
+                </section>
+
+                <section class="card-panel">
                     <div class="section-header">
                         <div>
                             <h3>Lista de alumnos</h3>
-                            <p class="section-text">Cada alumno queda como presente o ausente para la fecha elegida.</p>
+                            <p class="section-text">Cada alumno queda como presente o ausente.</p>
                         </div>
                         <div class="section-actions">
                             <button id="mark_all_present" type="button" class="secondary-btn">Marcar todos presentes</button>
@@ -70,18 +82,10 @@
 
                     <div id="attendance_list" class="attendance-list"></div>
                 </section>
+            </div>
 
-                <section class="card-panel">
-                    <h3>Vista del aula</h3>
-                    <p class="section-text">Si el curso tiene diseño generado, los asientos cambian de color y también podés hacer clic sobre ellos para alternar entre presente y ausente.</p>
-
-                    <div class="legend">
-                        <span class="legend-item"><i class="dot present"></i>Presente</span>
-                        <span class="legend-item"><i class="dot absent"></i>Ausente</span>
-                    </div>
-
-                    <div id="layout_container" class="layout-container"></div>
-                </section>
+            <div class="footer-actions">
+                <button id="continue_button" type="button" class="primary-btn">Continuar al resumen →</button>
             </div>
         </section>
     </main>

@@ -3,6 +3,7 @@ var pageTitle = document.getElementById("page_title")
 var pageSubtitle = document.getElementById("page_subtitle")
 var dateInput = document.getElementById("attendance_date")
 var backButton = document.getElementById("back_button")
+var continueButton = document.getElementById("continue_button")
 var saveMessage = document.getElementById("save_message")
 var attendanceList = document.getElementById("attendance_list")
 var layoutContainer = document.getElementById("layout_container")
@@ -44,11 +45,22 @@ document.body.onload = function () {
         dateInput.value = getTodayString()
     }
 
+    localStorage.setItem("attendanceDate", dateInput.value)
+
     backButton.addEventListener("click", function () {
         window.location.assign("../curso/curso.html")
     })
 
+    continueButton.addEventListener("click", function () {
+        if (!currentSession) {
+            setMessage("No hay sesión de asistencia cargada.", "error")
+            return
+        }
+        window.location.assign("../resumenAsistencias/resumen.html")
+    })
+
     dateInput.addEventListener("change", function () {
+        localStorage.setItem("attendanceDate", dateInput.value)
         loadSessionForCurrentDate()
         renderAll()
         setMessage("Se cargo la fecha seleccionada.", "success")
@@ -308,18 +320,18 @@ function renderAttendanceList(alumnos) {
 function renderLayout(alumnos) {
     layoutContainer.innerHTML = ""
 
-    var designs = getStorageArray("dise\u00F1os")
+    var designs = getStorageArray("diseños")
     var designData = designs.find(function (item) {
         return item.curso_id == courseId
     })
 
-    if (!designData || !designData["dise\u00F1o_element"]) {
+    if (!designData || !designData["diseño_element"]) {
         layoutContainer.innerHTML = '<div class="empty-state">Este curso todavia no tiene un diseño de aula generado. Igual podes registrar la asistencia desde la lista.</div>'
         return
     }
 
     var wrapper = document.createElement("div")
-    wrapper.innerHTML = designData["dise\u00F1o_element"]
+    wrapper.innerHTML = designData["diseño_element"]
     var designElement = wrapper.firstElementChild
 
     if (!designElement) {
@@ -329,13 +341,27 @@ function renderLayout(alumnos) {
 
     layoutContainer.append(designElement)
 
-    Array.from(designElement.querySelectorAll("div[id]")).forEach(function (node) {
-        if (node.id.includes(";") && node.id.includes("-")) {
-            node.textContent = "-"
-            applySeatStyle(node, "libre")
+    // Crear mapa de alumnos por asiento_id para búsqueda rápida
+    var alumnosByAsiento = {}
+    alumnos.forEach(function (alumno) {
+        if (alumno.asiento_id) {
+            alumnosByAsiento[alumno.asiento_id] = alumno
         }
     })
 
+    // Marcar asientos vacíos
+    Array.from(designElement.querySelectorAll("div[id]")).forEach(function (node) {
+        if (node.id.includes(";") && node.id.includes("-")) {
+            var alumnoEnAsiento = alumnosByAsiento[node.id]
+            
+            if (!alumnoEnAsiento) {
+                node.textContent = "-"
+                applySeatStyle(node, "libre")
+            }
+        }
+    })
+
+    // Asignar alumnos a asientos y hacer clickeables
     alumnos.forEach(function (alumno) {
         if (!alumno.asiento_id) {
             return
@@ -354,10 +380,14 @@ function renderLayout(alumnos) {
         asiento.style.cursor = "pointer"
         applySeatStyle(asiento, estado)
 
-        asiento.addEventListener("click", function () {
-            var nuevoEstado = estado === "presente" ? "ausente" : "presente"
-            updateStatus(alumno.alumno_id, nuevoEstado)
-        })
+        // Crear función IIFE para capturar el alumno_id correctamente
+        asiento.onclick = (function(alumnoId) {
+            return function () {
+                var estadoActual = getStatusForAlumno(alumnoId)
+                var nuevoEstado = estadoActual === "presente" ? "ausente" : "presente"
+                updateStatus(alumnoId, nuevoEstado)
+            }
+        })(alumno.alumno_id)
     })
 }
 

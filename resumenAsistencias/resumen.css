@@ -5,8 +5,6 @@
     --texto-secundario: #5f6b7a;
     --verde: #1f9d55;
     --verde-bg: #e8f7ee;
-    --amarillo: #c28b00;
-    --amarillo-bg: #fff7df;
     --rojo: #cf3d3d;
     --rojo-bg: #fdeaea;
     --gris-bg: #eef2f7;
@@ -83,7 +81,7 @@ body::before {
     padding: 2rem 1rem 3rem;
 }
 
-.attendance-panel {
+.resume-panel {
     width: min(96vw, 1450px);
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.88);
@@ -101,6 +99,7 @@ body::before {
     justify-content: space-between;
     gap: 1rem;
     align-items: flex-start;
+    margin-bottom: 1.5rem;
 }
 
 .eyebrow {
@@ -118,8 +117,7 @@ body::before {
     font-size: clamp(1.9rem, 4vw, 2.4rem);
 }
 
-.panel-description,
-.section-text {
+.panel-description {
     margin: 0.5rem 0 0;
     color: var(--texto-secundario);
     line-height: 1.45;
@@ -129,22 +127,14 @@ body::before {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
-    align-items: end;
+    align-items: center;
+    justify-content: flex-end;
 }
 
-.date-label {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
+.date-display {
     color: var(--texto-principal);
     font-weight: 600;
-}
-
-.date-label input {
-    padding: 0.72rem 0.85rem;
-    border: 1px solid #d2dbe7;
-    border-radius: 10px;
-    font-size: 0.95rem;
+    white-space: nowrap;
 }
 
 .secondary-btn {
@@ -159,10 +149,6 @@ body::before {
 
 .secondary-btn:hover {
     background: #dce7f4;
-}
-
-.danger-soft {
-    color: #b42318;
 }
 
 .primary-btn {
@@ -180,20 +166,11 @@ body::before {
     background: var(--color-primario-hover);
 }
 
-.save-message {
-    min-height: 1.2rem;
-    margin: 0.8rem 0 0;
-    font-weight: 600;
-}
-
-.save-message.success { color: #1b8a3b; }
-.save-message.error { color: #c62828; }
-
 .summary-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 0.85rem;
-    margin: 1rem 0 1.2rem;
+    margin-bottom: 2rem;
 }
 
 .summary-card {
@@ -211,170 +188,145 @@ body::before {
 
 .summary-card.total { background: #edf4ff; color: #1e5ebc; }
 .summary-card.present { background: var(--verde-bg); color: var(--verde); }
-.summary-card.late { background: var(--amarillo-bg); color: var(--amarillo); }
 .summary-card.absent { background: var(--rojo-bg); color: var(--rojo); }
-.summary-card.pending { background: var(--gris-bg); color: #637083; }
 
-.content-grid {
+.resume-grid {
     display: grid;
-    grid-template-columns: 1.2fr minmax(320px, 1fr);
-    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .card-panel {
     background: rgba(255, 255, 255, 0.72);
     border: 1px solid rgba(210, 219, 231, 0.75);
     border-radius: 16px;
-    padding: 1rem;
+    padding: 1.2rem;
 }
 
-.card-panel h3 {
-    margin: 0;
+.section-title {
+    margin: 0 0 1rem;
     color: var(--texto-principal);
-}
-
-.section-header {
+    font-size: 1.2rem;
+    font-weight: 700;
     display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    align-items: flex-start;
-    margin-bottom: 1rem;
+    gap: 0.5rem;
+    align-items: center;
 }
 
-.section-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
+.section-title.present {
+    color: var(--verde);
 }
 
-.attendance-list {
+.section-title.absent {
+    color: var(--rojo);
+}
+
+.student-resume-list {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
-}
-
-.student-item {
-    border: 1px solid #d5e3fb;
-    border-radius: 14px;
-    padding: 0.9rem;
-    background: #fdfefe;
-}
-
-.student-top {
-    display: flex;
-    justify-content: space-between;
     gap: 0.75rem;
-    align-items: start;
 }
 
-.student-name {
+.resume-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.9rem;
+    border-radius: 12px;
+    border: 1px solid #d5e3fb;
+}
+
+.present-item {
+    background: rgba(232, 247, 238, 0.4);
+    border-color: #7dd3a3;
+}
+
+.absent-item {
+    background: rgba(253, 234, 234, 0.4);
+    border-color: #f0a1a1;
+}
+
+.resume-item-content {
+    flex: 1;
+}
+
+.resume-name {
     margin: 0;
     color: var(--texto-principal);
-    font-size: 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
 }
 
-.student-meta {
+.resume-meta {
     margin: 0.25rem 0 0;
     color: var(--texto-secundario);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
-.status-badge {
+.resume-badge {
     display: inline-flex;
     align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 0.85rem;
     border-radius: 999px;
-    padding: 0.35rem 0.7rem;
-    font-size: 0.82rem;
     font-weight: 700;
+    font-size: 0.85rem;
     white-space: nowrap;
 }
 
-.status-badge.presente { background: var(--verde-bg); color: var(--verde); }
-.status-badge.tarde { background: var(--amarillo-bg); color: var(--amarillo); }
-.status-badge.ausente { background: var(--rojo-bg); color: var(--rojo); }
-.status-badge.sin-marcar { background: var(--gris-bg); color: #637083; }
-
-.status-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.55rem;
-    margin-top: 0.8rem;
+.resume-badge.present {
+    background: var(--verde-bg);
+    color: var(--verde);
 }
 
-.status-btn {
-    border: 1px solid #d2dbe7;
-    background: white;
-    border-radius: 10px;
-    padding: 0.55rem 0.75rem;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.status-btn.active.presente { background: var(--verde); color: white; border-color: var(--verde); }
-.status-btn.active.tarde { background: #d9a000; color: white; border-color: #d9a000; }
-.status-btn.active.ausente { background: var(--rojo); color: white; border-color: var(--rojo); }
-.status-btn.active.sin-marcar { background: #637083; color: white; border-color: #637083; }
-
-.legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin: 0.9rem 0 1rem;
-}
-
-.legend-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    color: var(--texto-secundario);
-    font-size: 0.92rem;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-.dot.present { background: var(--verde); }
-.dot.late { background: #d9a000; }
-.dot.absent { background: var(--rojo); }
-.dot.pending { background: #94a3b8; }
-
-.layout-container {
-    overflow: auto;
-    padding-bottom: 0.5rem;
+.resume-badge.absent {
+    background: var(--rojo-bg);
+    color: var(--rojo);
 }
 
 .empty-state {
-    padding: 0.95rem;
+    padding: 1.2rem;
     border-radius: 12px;
     background: rgba(0, 123, 255, 0.07);
     border: 1px dashed rgba(0, 123, 255, 0.35);
     color: var(--texto-secundario);
+    text-align: center;
 }
 
 .footer-actions {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-top: 2rem;
     padding-top: 1.5rem;
     border-top: 1px solid rgba(210, 219, 231, 0.5);
 }
 
 @media (max-width: 1100px) {
-    .content-grid {
+    .resume-grid {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 760px) {
     .panel-header,
-    .section-header,
-    .student-top {
+    .header-actions {
         flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-actions {
+        width: 100%;
+    }
+
+    .resume-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .resume-badge {
+        align-self: flex-start;
     }
 }
 
@@ -382,5 +334,17 @@ body::before {
     .navbar-content { padding: 0 12px; }
     .navbar-logo { height: 42px; }
     .navbar-titulo { font-size: 0.8rem; }
-    .attendance-panel { padding: 1rem; }
+    .resume-panel { padding: 1rem; }
+    
+    .footer-actions {
+        flex-direction: column;
+    }
+
+    .footer-actions button {
+        width: 100%;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
 }
