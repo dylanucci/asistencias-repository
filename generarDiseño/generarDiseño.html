@@ -1,18 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script defer type="module" src="generarDiseño.js" ></script>
+    <title>Generar diseño</title>
+    <link rel="stylesheet" href="generarDiseño.css">
+    <script defer src="generarDiseño.js"></script>
 </head>
 <body>
-    <form id="design_form">
-        <label for="">filas</label>
-        <input type="number" id="rows">
-        <label for="">columnas</label>
-        <input type="number" id="columns">
-        <button id="generate_button" type="button">Generar Diseño</button>
-    </form>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <img src="../Authentication/escudonashei.png" alt="Escudo institucional" class="navbar-logo">
+            <div class="navbar-titulo-container">
+                <h1 class="navbar-titulo">Sistema de Asistencia</h1>
+            </div>
+            <img src="../Authentication/escudonashei.png" alt="Escudo institucional" class="navbar-logo">
+        </div>
+    </nav>
+
+    <main class="page-wrapper">
+        <section class="form-card">
+            <p class="eyebrow">Distribución del aula</p>
+            <h2>Generar diseño</h2>
+            <p class="helper-text">Indicá cuántas filas y columnas de bancos querés para este curso.</p>
+
+            <form id="design_form" class="design-form">
+                <label for="rows">Filas</label>
+                <input type="number" id="rows" min="1" required>
+
+                <label for="columns">Columnas</label>
+                <input type="number" id="columns" min="1" required>
+
+                <p id="form_message" class="form-message" aria-live="polite"></p>
+
+                <div class="button-row">
+                    <button id="back_button" type="button" class="secondary-btn">Volver</button>
+                    <button id="generate_button" type="button" class="primary-btn">Generar diseño</button>
+                </div>
+            </form>
+        </section>
+    </main>
 </body>
 </html>

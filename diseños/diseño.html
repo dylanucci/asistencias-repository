@@ -1,22 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="diseño.js" type="module"></script>
+    <title>Visualizar diseño</title>
+    <script src="diseño.js" defer></script>
     <link rel="stylesheet" href="diseño.css">
 </head>
-<body>  
-    <div id="body_container" class="body_container">
-        <div id="alumnos_list" class="alumnos_list">
-            <div class="alumnos_title">
-                <p>Lista de alumnos</p>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <img src="../Authentication/escudonashei.png" alt="Escudo institucional" class="navbar-logo">
+            <div class="navbar-titulo-container">
+                <h1 class="navbar-titulo">Sistema de Asistencia</h1>
             </div>
-            <div id="alumnos_container" class="alumnos_container">
-
-            </div>
+            <img src="../Authentication/escudonashei.png" alt="Escudo institucional" class="navbar-logo">
         </div>
-    </div>
+    </nav>
+
+    <main class="page-wrapper">
+        <div id="body_container" class="body_container">
+            <section id="design_panel" class="card-panel design_panel">
+                <p class="eyebrow">Distribución del aula</p>
+                <h2 id="design_title">Diseño del curso</h2>
+                <p id="design_status" class="panel-description">Asigná asientos y marcá presente o ausente para la fecha elegida.</p>
+
+                <div class="design-tools">
+                    <label class="date-field" for="layout_date">
+                        Fecha
+                        <input type="date" id="layout_date">
+                    </label>
+                    <button id="mark_all_present_button" class="secondary-btn" type="button">Marcar todos presentes</button>
+                </div>
+
+                <p id="layout_message" class="panel-message" aria-live="polite"></p>
+            </section>
+
+            <section id="alumnos_list" class="alumnos_list card-panel">
+                <div class="alumnos_title">
+                    <p>Lista de alumnos y asistencia</p>
+                </div>
+                <div id="alumnos_container" class="alumnos_container"></div>
+            </section>
+        </div>
+    </main>
 </body>
 </html>

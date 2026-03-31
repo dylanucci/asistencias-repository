@@ -1,23 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Agregar curso</title>
     <link rel="stylesheet" href="cursoForm.css">
-    <script src="cursoForm.js" defer type="module"></script>
+    <script src="cursoForm.js" defer></script>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <img src="../Authentication/escudonashei.png" alt="Escudo institucional" class="navbar-logo">
+            <div class="navbar-titulo-container">
+                <h1 class="navbar-titulo">Sistema de Asistencia</h1>
+            </div>
+            <img src="../Authentication/escudonashei.png" alt="Escudo institucional" class="navbar-logo">
+        </div>
+    </nav>
 
-    <form id="curso_form">
-        <label>AÑO</label>
-        <input type="number" name="año" class="input_año" id="input_año">
-        <label>Division</label>
-        <input type="number" name="division" class="input_division" id="input_division">
+    <main class="page-wrapper">
+        <section class="form-card">
+            <p class="eyebrow">Nuevo curso</p>
+            <h2>Registrar curso</h2>
+            <p class="helper-text">Completá el año y la división para crear un nuevo curso.</p>
 
-        <button type="submit">Agregar curso nuevo</button>
+            <form id="curso_form" class="curso-form">
+                <label for="input_año">Año</label>
+                <input type="number" name="año" class="input_año" id="input_año" min="1" max="7" placeholder="Ej: 6" required>
 
-    </form>
+                <label for="input_division">División</label>
+                <input type="number" name="division" class="input_division" id="input_division" min="1" max="20" placeholder="Ej: 7" required>
 
+                <p id="form_message" class="form-message" aria-live="polite"></p>
+
+                <div class="button-row">
+                    <button type="button" id="back_button" class="secondary-btn">Volver</button>
+                    <button type="submit" class="primary-btn">Agregar curso nuevo</button>
+                </div>
+            </form>
+
+            <div class="divider"><span>o</span></div>
+
+            <section class="import-panel">
+                <h3>Cargar desde `alumnos.json`</h3>
+                <p class="helper-text compact">Seleccioná el archivo `alumnos.json` para importar automáticamente los cursos y alumnos que contiene.</p>
+                <input type="file" id="json_file_input" class="file-input" accept=".json,application/json">
+                <button type="button" id="import_json_button" class="secondary-btn import-btn">Importar desde JSON</button>
+            </section>
+        </section>
+    </main>
 </body>
 </html>

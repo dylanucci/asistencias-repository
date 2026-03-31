@@ -25,7 +25,7 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(0, 80, 170, 0.12));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.38), rgba(0, 80, 170, 0.12));
     pointer-events: none;
 }
 
@@ -73,23 +73,19 @@ body::before {
 .page-wrapper {
     position: relative;
     z-index: 1;
+    min-height: calc(100vh - 90px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     padding: 2rem 1rem 3rem;
 }
 
-.body_container {
-    display: grid;
-    grid-template-columns: minmax(280px, 390px) minmax(320px, 1fr);
-    gap: 1rem;
-    width: min(95vw, 1200px);
-    margin: 0 auto;
-    align-items: start;
-}
-
-.card-panel {
+.form-card {
+    width: min(92vw, 480px);
     background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(6px);
     border-radius: 18px;
-    padding: 1.4rem;
+    padding: 2rem;
     box-shadow:
         0 0 5px rgba(0, 0, 0, 0.22),
         0 12px 28px rgba(0, 0, 0, 0.18),
@@ -105,32 +101,30 @@ body::before {
     letter-spacing: 1.1px;
 }
 
-.add_alumno_form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-}
-
-.add_alumno_form h2,
-.panel-title {
+.form-card h2 {
     margin: 0;
     color: var(--texto-principal);
 }
 
-.form_item {
+.helper-text {
+    margin: 0.65rem 0 1.5rem;
+    color: var(--texto-secundario);
+    line-height: 1.5;
+}
+
+.design-form {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
-    width: 100%;
+    gap: 0.65rem;
 }
 
-.form_item label {
+.design-form label {
     font-size: 0.95rem;
-    font-weight: 600;
     color: #546171;
+    font-weight: 600;
 }
 
-.form_item input {
+.design-form input {
     width: 100%;
     padding: 0.85rem 0.95rem;
     border: 1px solid #d2dbe7;
@@ -140,8 +134,8 @@ body::before {
 }
 
 .form-message {
-    min-height: 1.1rem;
-    margin: 0;
+    min-height: 1.2rem;
+    margin: 0.25rem 0 0;
     font-size: 0.92rem;
     font-weight: 600;
 }
@@ -149,50 +143,30 @@ body::before {
 .form-message.error { color: #c62828; }
 .form-message.success { color: #1b8a3b; }
 
-.add_alumno_button {
+.button-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.3rem;
+}
+
+.button-row button {
+    flex: 1;
     border: none;
     border-radius: 10px;
     padding: 0.9rem 1rem;
-    background: var(--color-primario);
-    color: white;
     font-size: 0.98rem;
     font-weight: 700;
     cursor: pointer;
 }
 
-.add_alumno_button:hover {
-    background: var(--color-primario-hover);
-}
-
-.alumnos_list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-.alumnos_container {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    width: 100%;
-}
-
-.empty-state {
-    padding: 0.95rem;
-    border-radius: 12px;
-    background: rgba(0, 123, 255, 0.07);
-    border: 1px dashed rgba(0, 123, 255, 0.35);
-    color: var(--texto-secundario);
-}
-
-@media (max-width: 900px) {
-    .body_container {
-        grid-template-columns: 1fr;
-    }
-}
+.primary-btn { background: var(--color-primario); color: white; }
+.primary-btn:hover { background: var(--color-primario-hover); }
+.secondary-btn { background: #e7edf5; color: var(--texto-principal); }
 
 @media (max-width: 640px) {
     .navbar-content { padding: 0 12px; }
     .navbar-logo { height: 42px; }
     .navbar-titulo { font-size: 0.8rem; }
+    .form-card { padding: 1.25rem; }
+    .button-row { flex-direction: column; }
 }

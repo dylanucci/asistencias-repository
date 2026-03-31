@@ -1,57 +1,123 @@
 var cursosTitle = document.getElementById("cursos_title")
-
 var cursosContainer = document.getElementById("cursos_container")
-
-var flexCursosContainer = document.getElementById("flex_cursos_container")
-
 var addCursoButton = document.getElementById("add_curso_button")
 
-const cursoItemStyle = {
-    backgroundColor: "rgb(0, 109, 252)",
-    color: "white",
-    textAlign: "center",
-    width: "100%",
-    height: "50px",
-    marginBottom: "7px"
-};
+function getStorageArray(key) {
+    try {
+        var value = localStorage.getItem(key)
+        if (!value) {
+            return []
+        }
 
-addCursoButton.addEventListener("click", ()=>{
-    window.location.assign("../agregarCurso/cursoForm.html")
-})
+        var parsed = JSON.parse(value)
+        return Array.isArray(parsed) ? parsed : []
+    } catch {
+        return []
+    }
+}
 
+function mostrarEstadoVacio() {
+    cursosTitle.textContent = "Cursos disponibles"
+    cursosContainer.innerHTML = `
+        <div class="empty-state">
+            Todavía no hay cursos cargados. Usá el botón inferior para crear el primero.
+        </div>
+    `
+}
 
-document.body.onload = ()=>{
-
-    preChargeSixSeven()
-
-    var cursosString = localStorage.getItem("cursos")
-
-    if (cursosString == ""){
-        cursosTitle.innerHTML = "No hay cursos registrados"
+function eliminarCurso(cursoId) {
+    var confirmacion = window.confirm(`¿Querés eliminar el curso ${cursoId} y todos sus datos asociados?`)
+    if (!confirmacion) {
         return
     }
 
-    var cursos = JSON.parse(cursosString)
+    var cursos = getStorageArray("cursos").filter(function (curso) {
+        return curso.id !== cursoId
+    })
 
+    var alumnos = getStorageArray("alumnos").filter(function (alumno) {
+        return alumno.curso_id !== cursoId
+    })
 
-    cursos.forEach(c => {
+    var diseños = getStorageArray("diseños").filter(function (diseño) {
+        return diseño.curso_id !== cursoId
+    })
 
-        var cursoItem = document.createElement("button")
+    var asientos = getStorageArray("asientos").filter(function (asiento) {
+        return !String(asiento.diseño_id || "").startsWith(`${cursoId}-`)
+    })
 
-        Object.assign(cursoItem.style, cursoItemStyle)
-        
-        cursoItem.id = c.id
+    var bancos = getStorageArray("bancos").filter(function (banco) {
+        return !String(banco.diseño_id || "").startsWith(`${cursoId}-`)
+    })
 
-        cursoItem.innerHTML = c.id
+    var asistencias = getStorageArray("asistencias").filter(function (asistencia) {
+        return asistencia.curso_id !== cursoId
+    })
 
-        cursoItem.addEventListener("click", (e)=>{
-            localStorage.setItem("cursoCurrent", e.target.id)
+    localStorage.setItem("cursos", JSON.stringify(cursos))
+    localStorage.setItem("alumnos", JSON.stringify(alumnos))
+    localStorage.setItem("diseños", JSON.stringify(diseños))
+    localStorage.setItem("asientos", JSON.stringify(asientos))
+    localStorage.setItem("bancos", JSON.stringify(bancos))
+    localStorage.setItem("asistencias", JSON.stringify(asistencias))
+
+    if (localStorage.getItem("cursoCurrent") === cursoId) {
+        localStorage.removeItem("cursoCurrent")
+    }
+
+    renderCursos()
+}
+
+function renderCursos() {
+    var cursos = getStorageArray("cursos")
+    cursosContainer.innerHTML = ""
+
+    if (!Array.isArray(cursos) || cursos.length === 0) {
+        mostrarEstadoVacio()
+        return
+    }
+
+    cursosTitle.textContent = cursos.length === 1
+        ? "1 curso disponible"
+        : `${cursos.length} cursos disponibles`
+
+    cursos.forEach(function (c) {
+        var cursoCard = document.createElement("div")
+        cursoCard.className = "cursos_container_item"
+
+        var cursoInfo = document.createElement("button")
+        cursoInfo.type = "button"
+        cursoInfo.className = "curso_open_button"
+        cursoInfo.id = c.id
+        cursoInfo.innerHTML = `<span>${c.id}</span><span class="curso_item_hint">Abrir</span>`
+
+        cursoInfo.addEventListener("click", function (e) {
+            localStorage.setItem("cursoCurrent", e.currentTarget.id)
             window.location.assign("../curso/curso.html")
         })
 
-        cursosContainer.append(cursoItem)
-    });
+        var deleteButton = document.createElement("button")
+        deleteButton.type = "button"
+        deleteButton.className = "curso_delete_button"
+        deleteButton.textContent = "Eliminar"
 
+        deleteButton.addEventListener("click", function () {
+            eliminarCurso(c.id)
+        })
+
+        cursoCard.append(cursoInfo, deleteButton)
+        cursosContainer.append(cursoCard)
+    })
+}
+
+addCursoButton.addEventListener("click", function () {
+    window.location.assign("../agregarCurso/cursoForm.html")
+})
+
+document.body.onload = function () {
+    preChargeSixSeven()
+    renderCursos()
 }
 
 function preChargeSixSeven(){

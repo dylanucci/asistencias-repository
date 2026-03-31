@@ -1,36 +1,239 @@
-.cursos_container_add_curso{
-    text-align: center;
-    color: black;
-    background-color: gray;
-    width: 100%;
-    height: 50px;
+:root {
+    --color-primario: #007bff;
+    --color-primario-hover: #0056b3;
+    --texto-principal: #243142;
+    --texto-secundario: #5f6b7a;
+    --superficie: rgba(255, 255, 255, 0.88);
 }
 
-.flex_cursos_container{
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-}
-.cursos_title{
-    margin: auto;
-    font-style: normal;
-    font-size: 25px;
-    margin-bottom: 10px;
+* {
+    box-sizing: border-box;
 }
 
-.cursos_container{
-    display: flex;
-    flex-direction: column;
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding-top: 90px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('../Authentication/fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.35), rgba(0, 80, 170, 0.12));
+    pointer-events: none;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 75px;
+    background-color: rgba(255, 255, 255, 0.95);
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
+    width: 100%;
+    padding: 0 30px;
+    gap: 1rem;
 }
 
-.cursos_container_item{
-    background-color: rgb(0, 109, 252);
-    color: white;
+.navbar-logo {
+    height: 55px;
+    width: auto;
+}
+
+.navbar-titulo-container {
+    flex: 1;
     text-align: center;
+}
+
+.navbar-titulo {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.page-wrapper {
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 90px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 1rem 3rem;
+}
+
+.panel-cursos {
+    width: min(92vw, 720px);
+    background: var(--superficie);
+    backdrop-filter: blur(7px);
+    border-radius: 18px;
+    padding: 2rem;
+    box-shadow:
+        0 0 5px rgba(0, 0, 0, 0.22),
+        0 12px 28px rgba(0, 0, 0, 0.18),
+        0 0 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.panel-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.eyebrow {
+    margin: 0 0 0.35rem;
+    color: var(--color-primario);
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.cursos_title {
+    margin: 0;
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    color: var(--texto-principal);
+}
+
+.panel-description {
+    margin: 0.6rem auto 0;
+    max-width: 560px;
+    color: var(--texto-secundario);
+    line-height: 1.5;
+}
+
+.cursos_container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
     width: 100%;
-    height: 50px;
-    margin-bottom: 7px;
+    margin-bottom: 1.35rem;
+}
+
+.cursos_container_item {
+    width: 100%;
+    border-radius: 14px;
+    padding: 0.8rem;
+    background: linear-gradient(135deg, #0d6efd, #0a58ca);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 10px 24px rgba(13, 110, 253, 0.22);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.cursos_container_item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 28px rgba(13, 110, 253, 0.28);
+    filter: brightness(1.03);
+}
+
+.curso_open_button {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    cursor: pointer;
+}
+
+.curso_delete_button {
+    border: none;
+    border-radius: 10px;
+    padding: 0.7rem 0.9rem;
+    background: rgba(185, 28, 28, 0.95);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.curso_delete_button:hover {
+    background: rgba(153, 27, 27, 1);
+    transform: translateY(-1px);
+}
+
+.curso_item_hint {
+    font-size: 0.82rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.16);
+    padding: 0.28rem 0.65rem;
+    border-radius: 999px;
+}
+
+.cursos_container_add_curso {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 0.95rem 1rem;
+    background-color: var(--color-primario);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cursos_container_add_curso:hover {
+    background-color: var(--color-primario-hover);
+    transform: translateY(-2px);
+}
+
+.empty-state {
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px dashed rgba(0, 123, 255, 0.35);
+    background: rgba(0, 123, 255, 0.07);
+    color: var(--texto-secundario);
+    text-align: center;
+}
+
+@media (max-width: 640px) {
+    .navbar-content {
+        padding: 0 12px;
+    }
+
+    .navbar-logo {
+        height: 42px;
+    }
+
+    .navbar-titulo {
+        font-size: 0.8rem;
+    }
+
+    .panel-cursos {
+        padding: 1.25rem;
+    }
+
+    .cursos_container_item {
+        flex-direction: column;
+        gap: 0.45rem;
+        text-align: center;
+    }
 }

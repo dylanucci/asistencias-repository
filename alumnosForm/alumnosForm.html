@@ -1,36 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="alumnosForm.js" defer type="module"></script>
+    <title>Agregar alumnos</title>
+    <script src="alumnosForm.js" defer></script>
     <link rel="stylesheet" href="alumnosForm.css">
 </head>
 <body>
-
-    <div class="body_container">
-
-        <form id="add_alumno_form" class="add_alumno_form">
-            <label style="margin-bottom: 20px; font-size: 32px;">Agregar alumno nuevo</label>
-            <div name="form_item_name" class="form_item">
-                <label>Nombre</label>
-                <input type="text" id="name_value" name="name_value" class="name_input">
+    <nav class="navbar">
+        <div class="navbar-content">
+            <img src="../Authentication/escudonashei.png" alt="Escudo institucional" class="navbar-logo">
+            <div class="navbar-titulo-container">
+                <h1 class="navbar-titulo">Sistema de Asistencia</h1>
             </div>
-            <div name="form_item_surname" class="form_item">
-                <label style="margin-bottom: 5px;" >Apellido</label>
-                <input type="text" class="surname_input" name="surname_value">
-            </div>
-            <button id="add_alumno_button" class="add_alumno_button">Agregar</button>
-    </form>
-        <div id="alumnos_list" class="alumnos_list">
-            <div id="alumnos_list_title" style="margin-bottom: 10px;">Lista de alumnos</div>
-            <div id="alumnos_container" class="alumnos_container">
+            <img src="../Authentication/escudonashei.png" alt="Escudo institucional" class="navbar-logo">
+        </div>
+    </nav>
+
+    <main class="page-wrapper">
+        <div class="body_container">
+            <form id="add_alumno_form" class="add_alumno_form card-panel">
+                <p class="eyebrow">Curso actual</p>
+                <h2 id="form_course_title">Agregar alumno nuevo</h2>
+                <div name="form_item_name" class="form_item">
+                    <label for="name_value">Nombre</label>
+                    <input type="text" id="name_value" name="name_value" class="name_input" required>
+                </div>
+                <div name="form_item_surname" class="form_item">
+                    <label for="surname_value">Apellido</label>
+                    <input type="text" id="surname_value" class="surname_input" name="surname_value" required>
+                </div>
+                <p id="alumno_form_message" class="form-message" aria-live="polite"></p>
+                <button id="add_alumno_button" class="add_alumno_button" type="submit">Agregar</button>
+            </form>
+
+            <div id="alumnos_list" class="alumnos_list card-panel">
+                <div id="alumnos_list_title" class="panel-title">Lista de alumnos</div>
+                <div id="alumnos_container" class="alumnos_container"></div>
             </div>
         </div>
-    </div>
-
-    
-
+    </main>
 </body>
 </html>
